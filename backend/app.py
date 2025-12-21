@@ -37,27 +37,29 @@ users = [
 load_dotenv()
 client=genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 def get_embedding(other,user):
-    result= [
-        np.array(e.values) for e in client.models.embed_content(
+    result= client.models.embed_content(
             model="gemini-embedding-001",
             contents=[other,user],
             #テキストの類似性を評価
             config=types.EmbedContentConfig(task_type="SEMANTIC_SIMILARITY")
-        ).embeddings
-    ]
+    )
 
-    embedding_matrix=np.array(result)
-    similarity_matrix=cosine_similarity(embedding_matrix)
-    similarity=similarity_matrix[0,1]
+    #プロフィールのベクトルを取り出す
+    vec1 = np.array(result.embeddings[0].values).reshape(1, -1)
+    vec2 = np.array(result.embeddings[1].values).reshape(1, -1)
+
+    #コサイン類似度を計算
+    similarity=cosine_similarity(vec1, vec2)[0][0]
     return similarity
-    # if similarity > 0.85:
-    #     return True
-    # else:
-    #     return False
 
 
 @app.route("/api/users",methods=["GET"])
 def get_users():
+    return jsonify(users)
+@app.route("/api/users",methods=["POST"])
+def add_user():
+    user=request.json["userData"]
+    users.append(user)
     return jsonify(users)
 
 @app.route("/api/match",methods=["POST"])

@@ -6,6 +6,7 @@ interface User {
   name: string;
   age: number;
   interests: string[];
+  introduction: string;
   percent: number;
 }
 
@@ -33,7 +34,6 @@ return (
             onChange={(e)=> setUserId(Number(e.target.value))}
             placeholder="ユーザーID"
             min="1"
-            max="3"
         />
         <button onClick={handleMatch}>診断開始</button>
         <h3>診断結果</h3>
