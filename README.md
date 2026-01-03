@@ -1,6 +1,6 @@
 # Compass
 ## ～ 価値観をベクトルで可視化する、DINKs向けマッチングアプリ ～
-<img width="908" height="882" alt="利用画面" src="https://github.com/user-attachments/assets/42ff0565-e41f-4ead-9bf4-21dae56b5211" />
+<img width="834" height="777" alt="利用画面イメージ" src="https://github.com/user-attachments/assets/bfd5cb2b-7553-41e4-8712-bd3a808ce96b" />
 
 ### 1. 概要
 DINKsとは、共働きで子どもを持たない選択を含む、個人の自立と対等なパートナーシップを重視するライフスタイルです。<br>
