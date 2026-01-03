@@ -28,12 +28,12 @@ const UserList: React.FC<UserProps> =( { currentUser })=>{
             <ul>
                 {users.filter(user => user.name!==currentUser.name).map((user) =>(
                     <ul key={user.id}>
-                        <p><strong>Name:</strong>{user.name}</p>
+                        <h3><strong>Name:</strong>{user.name}</h3>
                         <img src={user.imageUrl} alt={`${user.name}の画像`} style={{width:"12vw"}} />
                         <p><strong>Age:</strong>{user.age}</p>
                         <p><strong>Reasons:</strong>{user.values.reasons}</p>
-                        <p><strong>Priority:</strong>{user.values.workLifeBalance}</p>
-                        <p><strong>Financial:</strong>{user.values.financialSense}</p>
+                        <p><strong>Work Life Balance:</strong>{user.values.workLifeBalance}</p>
+                        <p><strong>Financial Sense:</strong>{user.values.financialSense}</p>
                         <p><strong>Vision:</strong>{user.values.vision}</p>
                         <p><strong>Distance:</strong>{user.values.distance}</p>
                     </ul>
