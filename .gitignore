@@ -1,5 +1,22 @@
+# Python(仮想環境・キャッシュ)
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
 .env
 
-.venv/
+# Node.js
+frontend/node_modules/
+frontend/build/
+.eslintcache
 
-node_modules/
+# Database(SQLite)
+backend/data.sqlite
+
+# Uploads(開発中にアップロードした画像)
+backend/uploads/
+!backend/uploads/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
