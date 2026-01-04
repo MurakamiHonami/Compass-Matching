@@ -51,8 +51,13 @@ return (
        <div>
             {matches.map((match)=>(
                 <div key={match.id}>
-                    <h3>{match.name} <small>{match.age}歳</small></h3>
-                    <p><strong>総合類似度:</strong>{match.totalScore}%</p>
+                    <div style={{display:"flex"}}>
+                        <img src={match.imageUrl} alt={`${match.name}の画像`} style={{width:"10vw"}} />
+                        <div>
+                            <h3>{match.name} <small>{match.age}歳</small></h3>
+                            <p><strong>総合類似度:</strong>{match.totalScore}%</p>
+                        </div>
+                    </div>
                     <div style={{ width: "100%", height: 250 }}>
                         <ResponsiveContainer width="100%" height="100%">
                             <RadarChart cx="50%" cy="50%" outerRadius="70%" data={match.matchScore}>
