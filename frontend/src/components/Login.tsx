@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { User } from "./Data"
+import "../App.css"
 
 interface LoginProps {
     onLoginSuccess: (user: User) => void;

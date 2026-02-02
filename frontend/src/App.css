@@ -1,38 +1,569 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+:root {
+  --bg-color: #1c4366;
+  --bg-inverse-color: #fff;
+  --primary-color: #0465be;
+  --primary-inverse-color: #fff;
+
+  --headerH: 70px;
 }
 
-.App-logo {
-  height: 40vmin;
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--bg-inverse-color);
+  font-family: "Jost", "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: 15px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: "Jost", "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--headerH);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1000;
+}
+
+.header-logo {
+  height: 40px;
+}
+
+.header-title {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.banner-text {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  background: rgba(0,0,0,0.6);
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.2em;
+}
+
+.App {
+  padding: 2rem;
+  margin-top: 20px;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+}
+
+form {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.3rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.user-list {
+  margin-top: 2rem;
+}
+
+.user-card {
+  background: rgba(255,255,255,0.1);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+}
+
+.match-card {
+  background: rgba(255,255,255,0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.match-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.match-info img {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.recharts-wrapper {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.section {
+  margin-top: 2rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-head h2 {
+  margin: 0;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.collapsible {
+  overflow: hidden;
+  max-height: 2000px; /* open時の最大。十分大きく */
+  opacity: 1;
+  transform: translateY(0);
+  transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.collapsible.is-closed {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .user-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.user-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 1.1rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+.user-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.user-avatar {
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+.user-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.user-meta {
+  opacity: 0.85;
+  font-size: 0.9rem;
+  margin: 0.15rem 0 0;
+}
+
+.user-values {
+  margin-top: 0.6rem;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+  opacity: 0.9;
+}
+
+.user-values strong {
+  opacity: 0.9;
+}
+
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .match-grid { grid-template-columns: 1fr; }
+}
+
+.match-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 1.2rem 1.2rem 1rem;
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.match-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.35);
+}
+
+.match-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(
+    rgba(0, 255, 255, 0.35),
+    transparent 50%
+  );
+  filter: blur(18px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.match-card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.match-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.match-person {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.match-avatar {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.20);
+}
+
+.match-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.match-age {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.92rem;
+  opacity: 0.8;
+}
+
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.14);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.score-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00ffff;
+  box-shadow: 0 0 14px rgba(0, 255, 255, 0.9);
+}
+
+.match-sub {
+  margin: 0.1rem 0 0;
+  opacity: 0.85;
+  font-size: 0.92rem;
+}
+
+/* チャート枠 */
+.match-chart {
+  margin-top: 0.8rem;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.muted {
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+:root{
+  --bg-color:#1c4366;
+  --bg-inverse-color:#fff;
+  --primary-color:#0465be;
+  --primary-inverse-color:#fff;
+}
+
+/* ページ全体 */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--bg-inverse-color);
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.layout{
+  display: grid;
+  grid-template-columns: minmax(320px, 38vw) 1fr;
   min-height: 100vh;
+}
+
+.sideBanner{
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: url("../public/banner.png") no-repeat center center / cover;
+  overflow: hidden;
+}
+
+.sideBanner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.65) 0%,
+    rgba(0,0,0,0.25) 45%,
+    rgba(0,0,0,0.70) 100%
+  );
+  pointer-events: none;
+}
+
+.sideBanner-overlay{
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 2.2rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ブランドエリア（ロゴ＋タイトル） */
+.sideBanner-brand{
+  display:flex;
+  align-items:center;
+  gap: 0.9rem;
+}
+
+.sideBanner-logo{
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
+}
+
+.sideBanner-title{
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* キャッチコピー */
+.sideBanner-copy{
+  max-width: 22rem;
+  margin-bottom: 50rem;
+}
+
+.copy-main{
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.copy-sub{
+  margin: 0.8rem 0 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ===========================
+  右：メインパネル
+=========================== */
+.mainPanel{
+  min-height: 100vh;
+  background: rgba(0,0,0,0.08);
+}
+
+/* 上部バー（右カラム内のヘッダー） */
+.topBar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.6rem;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
-.App-link {
-  color: #61dafb;
+.appTitle{
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.loginState{
+  margin-right: 3rem;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-size: 0.95rem;
+}
+
+.content{
+  padding: 1.6rem;
+}
+
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.muted{
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px){
+  .layout{
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .sideBanner{
+    position: relative;
+    height: 36vh;
   }
+
+  .content{
+    padding: 1.2rem;
+  }
+}
+
+.appTitle,
+.sideBanner-title,
+.copy-main {
+  font-family: "Jost", "Noto Sans JP", sans-serif;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.match-name,
+.user-name {
+  font-family: "Jost", "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+button {
+  font-family: "Jost", "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 0.81rem 1.2rem;
+  margin: 0.42rem 0;
+  border-radius: 999px;
+  font-family: "Jost", "Noto Sans JP", sans-serif;
+
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+
+  color: #1b1b1b;
+  border: 1px solid #c4a857;
+  background: linear-gradient(135deg, #fff0c2, #ffdc82);
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.3),
+    0 0 12px rgba(255,215,111,0.55);
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+h2 {
+  letter-spacing: .1em;
+  color: #fff;
+  text-shadow: -4px 3px 0 #000, -5px 4px 0 #000;
 }
