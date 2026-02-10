@@ -8,12 +8,16 @@
   --headerH: 70px;
 }
 
+@font-face {
+  font-family: "AIRiS";
+  src: url("../font/AIRiS.ttf") format("truetype");
+}
+
 html, body {
   margin: 0;
   padding: 0;
   background: var(--bg-color);
   color: var(--bg-inverse-color);
-  font-family: "Jost", "Noto Sans JP", sans-serif;
   font-weight: 400;
   letter-spacing: 0.02em;
   font-size: 15px;
@@ -21,7 +25,11 @@ html, body {
   overflow-x: hidden;
 }
 
-h1, h2, h3 {
+h1 {
+  font-size: 3rem;
+  margin: 0 0 1rem 0;
+}
+h2, h3 {
   font-family: "Jost", "Noto Sans JP", sans-serif;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -357,13 +365,11 @@ input, textarea {
   --primary-inverse-color:#fff;
 }
 
-/* ページ全体 */
 html, body {
   height: 100%;
   margin: 0;
   background: var(--bg-color);
   color: var(--bg-inverse-color);
-  font-family: "Noto Sans JP", sans-serif;
 }
 
 .layout{
@@ -443,15 +449,11 @@ html, body {
   opacity: 0.9;
 }
 
-/* ===========================
-  右：メインパネル
-=========================== */
 .mainPanel{
   min-height: 100vh;
   background: rgba(0,0,0,0.08);
 }
 
-/* 上部バー（右カラム内のヘッダー） */
 .topBar{
   position: sticky;
   top: 0;
@@ -521,12 +523,19 @@ html, body {
   }
 }
 
-.appTitle,
-.sideBanner-title,
-.copy-main {
-  font-family: "Jost", "Noto Sans JP", sans-serif;
+
+.sideBanner-title
+ {
+  font-family: "AIRiS", sans-serif;
   letter-spacing: 0.04em;
   font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.header-title {
+  font-family: "Jost", "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
 .match-name,

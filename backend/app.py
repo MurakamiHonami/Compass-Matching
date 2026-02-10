@@ -95,7 +95,7 @@ def add_user():
         password=password,
         age=int(age),
         values_json=values,
-        image_url=f"http://localhost:5000/uploads/{filename}"
+        image_url=f"http://127.0.0.1:5000/uploads/{filename}"
     )
 
     db.session.add(new_user)
