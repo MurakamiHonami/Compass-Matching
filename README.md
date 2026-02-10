@@ -1,6 +1,6 @@
 # Compass
 ## ～ 価値観をベクトルで可視化するマッチングアプリ ～
-<img width="1910" height="893" alt="画面イメージ" src="https://github.com/user-attachments/assets/13ef2a3f-4120-41fc-9f7f-482f029a8629" />
+<img width="1900" height="878" alt="画面イメージ" src="https://github.com/user-attachments/assets/b02baa4a-54a1-449e-8d11-59416998f628" />
 
 ### 1. 概要
 ライフスタイルや人生方針の近い相手を探せるマッチングアプリです<br>
